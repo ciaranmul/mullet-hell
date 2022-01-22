@@ -7,12 +7,7 @@ onready var hours = Hours.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    randomize()
-    new_game()
-
-func _on_StartTimer_timeout():
-    $HourTimer.start()
-    $Player.start($StartPosition.position)
+    pass
 
 func _on_HourTimer_timeout():
     if hours.is_before_work(hour):
@@ -26,4 +21,11 @@ func time_up():
 
 func new_game():
     hour = 0
-    $StartTimer.start()
+    $HourTimer.start()
+    $Player.start($StartPosition.position)
+
+
+func _on_Menu_start_game():
+    for child in $Menu.get_children():
+        child.hide()
+    new_game()

@@ -20,7 +20,7 @@ func _physics_process(delta):
     var movement = speed * direction * delta
     
     if not is_zero_approx(movement.x) or not is_zero_approx(movement.y):
-        rotation = movement.angle() + (90 * PI / 180)
+        rotation = movement.angle() + (90 * PI / 180) # I dont wanna fuk wit da sprites
     
     move_and_collide(movement)
 
