@@ -11,5 +11,4 @@ func _ready():
 
 func update_time(hour):
     var time = hours.hour_to_time(hour)
-    print("Time: %s" % time)
-    $Time.text = str(time)
+    $BottomBar/TimeDisplay/Time.text = str(time)

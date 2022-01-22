@@ -1,6 +1,5 @@
 extends Node
 
-export (PackedScene) var Mob
 var hour = 0
 
 const Hours = preload("Hours.gd")
@@ -18,10 +17,9 @@ func _on_StartTimer_timeout():
 func _on_HourTimer_timeout():
     if hours.is_before_work(hour):
         hour+=1
+        $HUD.update_time(hour)
     else:
         time_up()
-        
-    $HUD.update_time(hour)
 
 func time_up():
     print("Time's up")

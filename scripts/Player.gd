@@ -1,12 +1,9 @@
 extends KinematicBody2D
 
-signal hit
 export var speed = 400  # How fast the player will move (pixels/sec).
-var screen_size  # Size of the game window.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    screen_size = get_viewport_rect().size
     hide()
 
 func _physics_process(delta):
@@ -21,9 +18,9 @@ func _physics_process(delta):
 
     # Apply movement
     var movement = speed * direction * delta
-
-    position.x = clamp(position.x, 0, screen_size.x)
-    position.y = clamp(position.y, 0, screen_size.y)
+    
+    if not is_zero_approx(movement.x) or not is_zero_approx(movement.y):
+        rotation = movement.angle() + (90 * PI / 180)
     
     move_and_collide(movement)
 
@@ -31,4 +28,3 @@ func _physics_process(delta):
 func start(pos):
     position = pos
     show()
-    $CollisionShape2D.disabled = false
