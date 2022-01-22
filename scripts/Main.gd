@@ -8,7 +8,7 @@ onready var hours = Hours.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
     pass
-    
+
 func _process(delta):
     if Input.is_action_pressed("ui_cancel"):
         end_game()
@@ -31,7 +31,7 @@ func new_game():
 
 func end_game():
     $Player.hide()
-    
+
     for child in $Menu.get_children():
         child.show()
 

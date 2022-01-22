@@ -34,6 +34,6 @@ func hour_to_time(hour):
             return "08:00"
         16:
             return "09:00"
-        
+
 func is_before_work(hour):
     return hour < 16

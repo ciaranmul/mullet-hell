@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/InteractionComponentUI.gd" type="Script" id=1]
+[ext_resource path="res://sprites/HUD/cursor1.png" type="Texture" id=2]
+
+[node name="InteractionComponentUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+interaction_texture_nodepath = NodePath("HBoxContainer/TextureRect")
+interaction_text_nodepath = NodePath("HBoxContainer/RichTextLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 28.0
+texture = ExtResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+margin_left = 32.0
+margin_right = 32.0
+margin_bottom = 28.0
+text = "Interact"
