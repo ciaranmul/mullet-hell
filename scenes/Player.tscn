@@ -12,13 +12,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16.0206, 16.0338 )
+extents = Vector2( 15.856, 16.207 )
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
