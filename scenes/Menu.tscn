@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://sprites/HUD/Untitled 11.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=2]
+[ext_resource path="res://sprites/HUD/Untitled 10.png" type="Texture" id=3]
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -14,11 +15,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 183.436
+margin_top = 3.87195
+margin_right = 503.436
+margin_bottom = 323.872
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureButton" type="TextureButton" parent="."]
-margin_left = 282.171
-margin_top = 240.547
-margin_right = 410.171
-margin_bottom = 368.547
+margin_left = 198.923
+margin_top = 211.991
+margin_right = 518.923
+margin_bottom = 531.991
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

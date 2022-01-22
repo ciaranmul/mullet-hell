@@ -21,6 +21,10 @@ func _physics_process(delta):
     
     if not is_zero_approx(movement.x) or not is_zero_approx(movement.y):
         rotation = movement.angle() + (90 * PI / 180) # I dont wanna fuk wit da sprites
+        $AnimatedSprite.play()
+    else:
+        $AnimatedSprite.stop()
+        $AnimatedSprite.set_frame(0)
     
     move_and_collide(movement)
 
