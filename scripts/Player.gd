@@ -7,6 +7,7 @@ export var toxicity_scale : NodePath
 var toxicity_percent = 0
 
 signal toxicity_changed(newValue)
+signal blacked_out
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,10 +40,25 @@ func start(pos):
     position = pos
     show()
 
-
-func _on_Dionysis_increase_player_toxicity(amount):
+func increase_toxicity(amount):
     if toxicity_percent < 100:
         toxicity_percent += amount
         emit_signal("toxicity_changed", toxicity_percent)
+        ScoreManager.set_multiplier(toxicity_percent/10)
     else:
-        print("you're fucked")
+        black_out()
+
+func decrease_toxicity(amount):
+    var temp_toxicity = toxicity_percent - amount
+    toxicity_percent = max(0, temp_toxicity)
+    emit_signal("toxicity_changed", toxicity_percent)
+
+func black_out():
+    emit_signal("blacked_out")
+
+func _on_Dionysis_increase_player_toxicity(amount):
+    increase_toxicity(amount)
+
+
+func _on_SoberTimer_timeout():
+    decrease_toxicity(5)

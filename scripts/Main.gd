@@ -21,7 +21,7 @@ func _on_HourTimer_timeout():
         time_up()
 
 func time_up():
-    print("Time's up")
+    print("Fade to black, then boss good morning scene")
 
 func new_game():
     hour = 0
@@ -39,3 +39,7 @@ func _on_Menu_start_game():
     for child in $Menu.get_children():
         child.hide()
     new_game()
+
+
+func _on_Player_blacked_out():
+    print("fade to black, then boss scolding scene")

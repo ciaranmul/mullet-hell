@@ -11,6 +11,5 @@ func _ready():
     pass # Replace with function body.
 
 func _on_Player_toxicity_changed(newValue):
-    print("new value: %s" % newValue)
     var frame = (newValue / 20) - 1
     set_frame(frame)

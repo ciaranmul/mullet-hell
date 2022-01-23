@@ -24,6 +24,6 @@ func interaction_interact(interactionComponentParent : Node) -> void:
     $AnimatedSprite.frame = 1
     $Particles2D.emitting = 1
     
-    emit_signal("increase_score", 1000)
+    ScoreManager.increase_score(1000)
     
     collision_layer = collision_layer ^ 4

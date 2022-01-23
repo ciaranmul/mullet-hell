@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=2]
@@ -32,12 +32,13 @@
 [ext_resource path="res://sprites/HUD/Player_Portraits/Untitled_2_2_2.png" type="Texture" id=30]
 [ext_resource path="res://sprites/HUD/Player_Portraits/Untitled_2_2_2_2.png" type="Texture" id=31]
 [ext_resource path="res://scenes/Plant.tscn" type="PackedScene" id=32]
-[ext_resource path="res://scripts/ScoreManager.gd" type="Script" id=33]
+[ext_resource path="res://sprites/HUD/VCR_OSD_MONO_1.001.ttf" type="DynamicFontData" id=33]
 [ext_resource path="res://shaders/scanline.shader" type="Shader" id=34]
 [ext_resource path="res://scripts/Player_Camera_Canvas.gd" type="Script" id=35]
 [ext_resource path="res://scenes/Dionysis.tscn" type="PackedScene" id=36]
 [ext_resource path="res://scripts/ToxicityBar.gd" type="Script" id=37]
 [ext_resource path="res://scripts/Portrait.gd" type="Script" id=38]
+[ext_resource path="res://scripts/Score.gd" type="Script" id=39]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 4.13173, 0, 4.13173, 32, 0, 32 )
@@ -543,6 +544,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=23]
+size = 14
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=24]
+font_data = ExtResource( 33 )
+
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
 
@@ -688,7 +696,10 @@ margin_top = 437.069
 margin_right = 232.783
 margin_bottom = 451.069
 rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Score: 000000"
+script = ExtResource( 39 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -711,18 +722,17 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="HUD/BottomBar/Toxicity"]
-margin_left = 443.787
-margin_top = 443.787
-margin_right = 492.787
-margin_bottom = 474.787
+margin_left = 432.502
+margin_top = 441.332
+margin_right = 504.502
+margin_bottom = 474.332
+custom_fonts/font = SubResource( 24 )
 text = "Toxicity
 "
 
 [node name="Menu" parent="." instance=ExtResource( 27 )]
-
-[node name="ScoreManager" type="Node" parent="."]
-script = ExtResource( 33 )
 [connection signal="timeout" from="HourTimer" to="." method="_on_HourTimer_timeout"]
+[connection signal="blacked_out" from="Player" to="." method="_on_Player_blacked_out"]
 [connection signal="toxicity_changed" from="Player" to="HUD/BottomBar/Portrait" method="_on_Player_toxicity_changed"]
 [connection signal="toxicity_changed" from="Player" to="HUD/BottomBar/Toxicity/Bar" method="_on_Player_toxicity_changed"]
 [connection signal="increase_player_toxicity" from="Dionysis" to="Player" method="_on_Dionysis_increase_player_toxicity"]
