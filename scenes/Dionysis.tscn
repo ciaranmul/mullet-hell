@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://sprites/NPC/dionysis/dionysis_walk.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://scripts/Dionysis.gd" type="Script" id=2]
+[ext_resource path="res://sprites/Portraits/IMG_0038.PNG" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.82309
 height = 10.0969
 
 [node name="Dionysis" type="KinematicBody2D"]
-scale = Vector2( 2, 2 )
+scale = Vector2( 3, 3 )
 collision_layer = 5
 collision_mask = 5
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.0379143, 0 )
@@ -19,3 +22,30 @@ frames = ExtResource( 1 )
 position = Vector2( 0.379143, 0.151659 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialogue" type="ColorRect" parent="CanvasLayer"]
+visible = false
+margin_left = 1.032
+margin_top = 352.0
+margin_right = 721.032
+margin_bottom = 416.0
+color = Color( 0.827451, 0.0470588, 0.721569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Dialogue"]
+margin_left = 12.6467
+margin_top = 12.3885
+margin_right = 328.647
+margin_bottom = 52.3885
+text = "Have a beer, bro!"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Dialogue"]
+margin_left = 591.25
+margin_top = -62.7172
+margin_right = 719.25
+margin_bottom = 65.2828
+texture = ExtResource( 3 )

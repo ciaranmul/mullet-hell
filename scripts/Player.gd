@@ -6,6 +6,8 @@ export var toxicity_scale : NodePath
 
 var toxicity_percent = 0
 
+signal toxicity_changed(newValue)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     hide()
@@ -36,3 +38,11 @@ func _physics_process(delta):
 func start(pos):
     position = pos
     show()
+
+
+func _on_Dionysis_increase_player_toxicity(amount):
+    if toxicity_percent < 100:
+        toxicity_percent += amount
+        emit_signal("toxicity_changed", toxicity_percent)
+    else:
+        print("you're fucked")

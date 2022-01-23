@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=2]
@@ -36,6 +36,8 @@
 [ext_resource path="res://shaders/scanline.shader" type="Shader" id=34]
 [ext_resource path="res://scripts/Player_Camera_Canvas.gd" type="Script" id=35]
 [ext_resource path="res://scenes/Dionysis.tscn" type="PackedScene" id=36]
+[ext_resource path="res://scripts/ToxicityBar.gd" type="Script" id=37]
+[ext_resource path="res://scripts/Portrait.gd" type="Script" id=38]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 4.13173, 0, 4.13173, 32, 0, 32 )
@@ -678,6 +680,7 @@ __meta__ = {
 position = Vector2( 375.449, 448.968 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 21 )
+script = ExtResource( 38 )
 
 [node name="Score" type="Label" parent="HUD/BottomBar"]
 margin_left = 125.783
@@ -702,6 +705,7 @@ margin_left = 510.224
 margin_top = 442.667
 margin_right = 707.224
 margin_bottom = 456.667
+script = ExtResource( 37 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -719,6 +723,9 @@ text = "Toxicity
 [node name="ScoreManager" type="Node" parent="."]
 script = ExtResource( 33 )
 [connection signal="timeout" from="HourTimer" to="." method="_on_HourTimer_timeout"]
+[connection signal="toxicity_changed" from="Player" to="HUD/BottomBar/Portrait" method="_on_Player_toxicity_changed"]
+[connection signal="toxicity_changed" from="Player" to="HUD/BottomBar/Toxicity/Bar" method="_on_Player_toxicity_changed"]
+[connection signal="increase_player_toxicity" from="Dionysis" to="Player" method="_on_Dionysis_increase_player_toxicity"]
 [connection signal="hide_scanlines" from="Menu" to="Player/Camera2D/CanvasLayer" method="_on_Menu_hide_scanlines"]
 [connection signal="start_game" from="Menu" to="." method="_on_Menu_start_game"]
 
