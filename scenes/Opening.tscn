@@ -1,0 +1,92 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://animations/opening/mullet_working/intro_movie_mullet_guy1.png" type="Texture" id=1]
+[ext_resource path="res://animations/opening/mullet_working/intro_movie_mullet_guy2.png" type="Texture" id=2]
+[ext_resource path="res://animations/opening/mullet_working/intro_movie_mullet_guy3.png" type="Texture" id=3]
+[ext_resource path="res://animations/opening/freya/intro_movie_freya3.png" type="Texture" id=4]
+[ext_resource path="res://animations/opening/freya/intro_movie_freya1.png" type="Texture" id=5]
+[ext_resource path="res://animations/opening/mbaba/intro_movie_mbaba2.png" type="Texture" id=6]
+[ext_resource path="res://animations/opening/mbaba/intro_movie_mbaba1.png" type="Texture" id=7]
+[ext_resource path="res://scripts/Opening.gd" type="Script" id=8]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes3.png" type="Texture" id=9]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes1.png" type="Texture" id=10]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes11.png" type="Texture" id=11]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes10.png" type="Texture" id=12]
+[ext_resource path="res://animations/opening/dionysus_working/intro_movie_dionysus2.png" type="Texture" id=13]
+[ext_resource path="res://animations/opening/freya/intro_movie_freya2.png" type="Texture" id=14]
+[ext_resource path="res://animations/opening/dionysus_working/intro_movie_dionysus3.png" type="Texture" id=15]
+[ext_resource path="res://animations/opening/mbaba/intro_movie_mbaba3.png" type="Texture" id=16]
+[ext_resource path="res://animations/opening/dionysus_working/intro_movie_dionysus1.png" type="Texture" id=17]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes7.png" type="Texture" id=18]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes9.png" type="Texture" id=19]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes8.png" type="Texture" id=20]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes6.png" type="Texture" id=21]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes4.png" type="Texture" id=22]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes5.png" type="Texture" id=23]
+[ext_resource path="res://animations/opening/frakes/Intro_movie_frakes2.png" type="Texture" id=24]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot7.png" type="Texture" id=25]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot4.png" type="Texture" id=26]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot5.png" type="Texture" id=27]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot12.png" type="Texture" id=28]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot3.png" type="Texture" id=29]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot10.png" type="Texture" id=30]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot11.png" type="Texture" id=31]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot8.png" type="Texture" id=32]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot9.png" type="Texture" id=33]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot1.png" type="Texture" id=34]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot2.png" type="Texture" id=35]
+[ext_resource path="res://animations/opening/mullet_zoom/zoom_shot6.png" type="Texture" id=36]
+[ext_resource path="res://sounds/keyboard.wav" type="AudioStream" id=37]
+[ext_resource path="res://sounds/menuconfirm.wav" type="AudioStream" id=38]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 13 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "dionysus",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 24 ), ExtResource( 9 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 12 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "frakes",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 14 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "freya",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "mullet_man",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 29 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 36 ), ExtResource( 25 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "mullet_zoom",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "mbaba",
+"speed": 5.0
+} ]
+
+[node name="Opening" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimatedSprite" parent="."]
+position = Vector2( 360.933, 257.249 )
+scale = Vector2( 2.25, 2.25 )
+frames = SubResource( 1 )
+animation = "mullet_man"
+frame = 2
+playing = true
+
+[node name="KeyboardSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 37 )
+volume_db = -12.631
+autoplay = true
+
+[node name="Hype" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 38 )

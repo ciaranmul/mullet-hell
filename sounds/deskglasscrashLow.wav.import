@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/deskglasscrashLow.wav-345fe85706a29b724582dd8cbc4704d7.sample"
+
+[deps]
+
+source_file="res://sounds/deskglasscrashLow.wav"
+dest_files=[ "res://.import/deskglasscrashLow.wav-345fe85706a29b724582dd8cbc4704d7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

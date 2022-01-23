@@ -23,6 +23,7 @@ func interaction_interact(interactionComponentParent : Node) -> void:
     
     $AnimatedSprite.frame = 1
     $Particles2D.emitting = 1
+    $AudioStreamPlayer2D.play()
     
     ScoreManager.increase_score(1000)
     

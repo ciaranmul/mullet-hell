@@ -1,8 +1,7 @@
 extends CanvasLayer
 
 signal hide_scanlines(should_hide)
-
-signal start_game
+signal pressed_start
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,9 +14,8 @@ func _ready():
 
 
 func _on_TextureButton_pressed():
-    emit_signal("start_game")
-
+    print("start pressed")
+    emit_signal("pressed_start")
 
 func _on_CheckButton_toggled(button_pressed):
-    print("button toggled %s" % button_pressed)
-    emit_signal("hide_scanlines", !button_pressed)
+    ShaderManager.set_scanlines_enabled(button_pressed)

@@ -7,7 +7,7 @@ onready var hours = Hours.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass
+    new_game()
 
 func _process(delta):
     if Input.is_action_pressed("ui_cancel"):
@@ -21,7 +21,7 @@ func _on_HourTimer_timeout():
         time_up()
 
 func time_up():
-    print("Fade to black, then boss good morning scene")
+    game_over()
 
 func new_game():
     hour = 0
@@ -30,16 +30,16 @@ func new_game():
     $Player.start($StartPosition.position)
 
 func end_game():
-    $Player.hide()
-
-    for child in $Menu.get_children():
-        child.show()
+    get_tree().change_scene("res://scenes/SceneManager.tscn")
 
 func _on_Menu_start_game():
     for child in $Menu.get_children():
         child.hide()
     new_game()
 
+func game_over():
+    get_tree().change_scene("res://scenes/GameOver.tscn")
+    
 
 func _on_Player_blacked_out():
-    print("fade to black, then boss scolding scene")
+    game_over()
