@@ -13,7 +13,6 @@ func _process(delta):
 
 
 func _on_InteractableComponent_body_entered(body):
-    print("_on_InteractableComponent_body_entered()")
     var can_interact := false
 
     if (body.has_method("interaction_can_interact")):
@@ -27,7 +26,6 @@ func _on_InteractableComponent_body_entered(body):
 
 
 func _on_InteractableComponent_body_exited(body):
-    print("_on_InteractableComponent_body_exited()")
     if (body == interaction_target):
         interaction_target = null
         emit_signal("on_interactable_changed", null)

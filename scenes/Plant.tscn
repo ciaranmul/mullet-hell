@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/objects/smashed_pot_plant.png" type="Texture" id=1]
+[ext_resource path="res://sprites/objects/pot_plant.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Plant.gd" type="Script" id=3]
+[ext_resource path="res://particles/Plant.tres" type="Material" id=4]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 9.95401
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Plant" type="RigidBody2D"]
+collision_layer = 5
+collision_mask = 5
+gravity_scale = 0.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -3.14159
+scale = Vector2( 1.00839, 1.04931 )
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+lifetime = 0.5
+one_shot = true
+process_material = ExtResource( 4 )

@@ -1,21 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/objects/desk.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Desk.gd" type="Script" id=2]
+[ext_resource path="res://sprites/objects/wrecked-desk.png" type="Texture" id=3]
+[ext_resource path="res://particles/Desk.tres" type="Material" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.1318, 16.0515 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[node name="Desk" type="RigidBody2D"]
+[node name="Desk" type="RigidBody2D" groups=[
+"scoreable",
+]]
 collision_layer = 5
+collision_mask = 5
 gravity_scale = 0.0
 linear_damp = 10.0
 angular_damp = 5.0
@@ -27,3 +32,13 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -0.0376148 )
 frames = SubResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}

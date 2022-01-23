@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Player
 
 export var speed = 400  # How fast the player will move (pixels/sec).
+export var toxicity_scale : NodePath
 
 var toxicity_percent = 0
 
